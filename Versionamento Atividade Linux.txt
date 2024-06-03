@@ -1,0 +1,8 @@
+Versionamento Atividade Linux
+
+29/05 {
+
+Chave SSH e EC2 criadas
+Elastic IP anexada ao EC2
+Portas solicitadas abertas no SG
+}
