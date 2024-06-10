@@ -11,7 +11,7 @@ Versionamento Atividade Linux
 
 	Nova Chave SSH Public
 	Chave Vinculado ao EC2
-	Obs; A Chave SSH Primaria parou de funcionar, a chave pública adicionada posteriormente esta 	permitindo acesso SSH normal a instancia.
+	Obs; A Chave SSH Primaria parou de funcionar, a chave pública adicionada posteriormente esta 	permitindo acesso SSH normal a instância.
 }
 
 03/06 {
@@ -21,17 +21,17 @@ Versionamento Atividade Linux
 		/NFS    "*"(rw,sync,no_root_squash,no_all_squash)
 		/home   "*"(rw,sync,no_root_squash,no_all_squash)
 		}
-	Criado Diretorio "/NFS" Para compartilhamento
+	Criado Diretório "/NFS" Para compartilhamento
 	]
 
 	Instalação e configuração do nfs-common (cliente)
 	[configurado em /etc/fstab {
 		100.24.96.108:/NFS      /nfs_client     nfs     auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
 		}
-	Criado Diretorio /nfs_client Para compartilhamento
+	Criado Diretório /nfs_client Para compartilhamento
 	]
 	
-	Validação; Diretorio "Gabriel" criado do lado do cliente, e replicada do lado do servidor.
+	Validação; Diretório "Gabriel" criado do lado do cliente, e replicada do lado do servidor.
 }
 
 04/06 {
@@ -48,9 +48,14 @@ Versionamento Atividade Linux
 }
 
 06/06 {
+
 	Script de Validação usando shell script concluido "/scriptserver.sh"
 	Script usa uma estrutura if/else onde verifica se o serviço esta ativo e uma saída baseada na resposta
-	É usado ">/>>" para direcionar a saída do script para outro arquivo em "/NFS/Gabriel/validaçaohttpd
+	É usado ">/>>" para direcionar a saída do script para outro arquivo em "/NFS/Gabriel/validaçaohttpd"
 	O script foi configurado para executar a cada 5 minutos usando "crontab"
-	
+}
+
+10/06 {
+
+	Finalização do Versionamento e da Documentação
 }

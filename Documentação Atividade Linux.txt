@@ -1,0 +1,26 @@
+Documentação Atividade Linux
+
+
+Foi criado uma instância EC2 (Amazon Linux 2) t3.small, com 16GB de Armazenamento
+
+No ato da instância foi gerado uma chave SSH e criado um Security Group
+
+Security Group foi configurado conforme pedido na atividade, e foi adicionado protocolo ICMP ao SG para validação na criação do NFS
+
+Elastic IP criado e alocado na instância
+
+Foi criado outra Chave SSH a instância com intenção de manter para acesso público, mas acabou substituindo a original (Não consegui utilizar a primária mesmo mantendo ela no arquivo, estou utilizando a segunda chave para acesso SSH)
+
+Foi instalado nfs-utils para configurar o network file system, e foi validado com nfs-common configurado em outra EC2 (foi aberto também o protocolo ICMP para verificar a conexão entre as instâncias)
+
+Foi criado um Diretório "Gabriel" dentro do Diretório "/NFS" este configurado pelo nfs-utils
+
+Foi instalado o pacote httpd para subir um servidor apache, O serviço foi ativado com systemctl e validado ao acessar o servidor através do navegador pelo IP público
+
+Foi criado um script para verificar o status do servidor, optado pelo Shell por ser nativo do linux.
+
+Foi levantado um estudo de como criar o script e foi usado inicialmente o comando "curl" para retornar o código de status do servidor que mesmo online retornava o código 403 código que indica erro, em seguida foi usado ping para verificar o servidor, porém o ping funcionava mesmo com o servidor desativado, retornando sempre que o servidor estava online, por fim foi usado o próprio serviço httpd com parâmetro no status para verificar se estava ativo ou não, retornando de forma correta quando o servidor esta online ou offline
+
+O Script tem uma série de redirecionamento de saída para um arquivo no diretório "/NFS/Gabriel/validaçaohttpd" que salva a última verificação do servidor
+
+Foi utilizado o crontab para automatizar a execução do script a cada 5 minutos
