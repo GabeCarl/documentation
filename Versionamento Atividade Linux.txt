@@ -2,7 +2,55 @@ Versionamento Atividade Linux
 
 29/05 {
 
-Chave SSH e EC2 criadas
-Elastic IP anexada ao EC2
-Portas solicitadas abertas no SG
+	Chave SSH e EC2 criadas
+	Elastic IP anexada ao EC2
+	Portas solicitadas abertas no SG
+}
+
+31/05 {
+
+	Nova Chave SSH Public
+	Chave Vinculado ao EC2
+	Obs; A Chave SSH Primaria parou de funcionar, a chave pública adicionada posteriormente esta 	permitindo acesso SSH normal a instancia.
+}
+
+03/06 {
+
+	Instalação e configuração do nfs-utils (servidor)  
+	[configurado em /etc/exports {
+		/NFS    "*"(rw,sync,no_root_squash,no_all_squash)
+		/home   "*"(rw,sync,no_root_squash,no_all_squash)
+		}
+	Criado Diretorio "/NFS" Para compartilhamento
+	]
+
+	Instalação e configuração do nfs-common (cliente)
+	[configurado em /etc/fstab {
+		100.24.96.108:/NFS      /nfs_client     nfs     auto,nofail,noatime,nolock,intr,tcp,actimeo=1800 0 0
+		}
+	Criado Diretorio /nfs_client Para compartilhamento
+	]
+	
+	Validação; Diretorio "Gabriel" criado do lado do cliente, e replicada do lado do servidor.
+}
+
+04/06 {
+	
+	Instalação do httpd para criação de um servidor web apache
+	systemctl start httpd e systemctl enable httdp para iniciar e ativar o serviço
+	systemctl status httpd para verificar se o mesmo esta ativo
+	validação do site no ar com URL; 100.24.96.108. Funcionando corretamente
+}
+
+05/06 {
+	 
+	Criação do script usando shell para verificação do servidor
+}
+
+06/06 {
+	Script de Validação usando shell script concluido "/scriptserver.sh"
+	Script usa uma estrutura if/else onde verifica se o serviço esta ativo e uma saída baseada na resposta
+	É usado ">/>>" para direcionar a saída do script para outro arquivo em "/NFS/Gabriel/validaçaohttpd
+	O script foi configurado para executar a cada 5 minutos usando "crontab"
+	
 }
